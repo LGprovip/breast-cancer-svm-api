@@ -1,95 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Breast Cancer SVM</title>
 
+    <link rel="stylesheet" href="/static/style.css">
+
     <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
         rel="stylesheet"
-        href="/static/style.css"
     >
-
 </head>
-
 
 <body>
 
-<div class="page">
+<div class="background-glow glow-1"></div>
+<div class="background-glow glow-2"></div>
 
-    <!-- HEADER -->
+<div class="container">
 
-    <header class="header">
+    <!-- ================= HEADER ================= -->
+
+    <header class="topbar">
 
         <div class="brand">
 
             <div class="brand-icon">
-                🩺
+                🧬
             </div>
 
             <div>
-
                 <h1>Breast Cancer SVM</h1>
-
-                <p>
-                    Breast Cancer Wisconsin Classification
-                </p>
-
+                <p>Machine Learning Diagnostic Support Demo</p>
             </div>
 
         </div>
 
+        <div class="header-links">
 
-        <a
-            class="docs-button"
-            href="/docs"
-            target="_blank"
-        >
-            API Docs ↗
-        </a>
+            <span class="status">
+                <span class="status-dot"></span>
+                API Online
+            </span>
+
+            <a href="/docs" target="_blank">
+                API Docs ↗
+            </a>
+
+        </div>
 
     </header>
 
 
-    <!-- HERO -->
+    <!-- ================= HERO ================= -->
 
     <section class="hero">
 
         <div class="hero-content">
 
             <div class="badge">
-                ● SVM RBF MODEL
+                SVM · RBF Kernel · v1.0.0
             </div>
 
             <h2>
                 Breast Cancer
-                <span>Prediction</span>
+                <span>Classification</span>
             </h2>
 
             <p>
-                Nhập 30 đặc trưng hình thái học của tế bào
-                để thực hiện dự đoán bằng mô hình
-                Support Vector Machine.
+                Enter the tumor characteristics below and use the trained
+                Support Vector Machine model to classify the sample as
+                <strong>malignant</strong> or <strong>benign</strong>.
             </p>
 
         </div>
 
+        <div class="hero-visual">
 
-        <div class="hero-stat">
-
-            <div class="stat-number">
-                30
-            </div>
-
-            <div class="stat-label">
-                FEATURES
+            <div class="dna-ring">
+                <div class="dna-symbol">🧬</div>
             </div>
 
         </div>
@@ -97,56 +88,65 @@
     </section>
 
 
-    <!-- MAIN -->
+    <!-- ================= MAIN ================= -->
 
-    <main class="content">
+    <main class="main-grid">
 
+        <!-- ================= INPUT CARD ================= -->
 
-        <!-- FEATURE FORM -->
-
-        <section class="card">
+        <section class="card input-card">
 
             <div class="card-header">
 
                 <div>
-
-                    <h3>
-                        Input Features
-                    </h3>
-
-                    <p>
-                        Nhập các thông số của mẫu cần dự đoán
-                    </p>
-
+                    <span class="section-label">INPUT DATA</span>
+                    <h3>Tumor Characteristics</h3>
                 </div>
 
                 <div class="feature-count">
-                    30 inputs
+                    <strong>30</strong>
+                    features
                 </div>
 
             </div>
 
 
-            <!-- MEAN -->
+            <!-- ACTIONS -->
 
-            <div class="feature-group">
+            <div class="actions">
 
-                <div class="group-title">
+                <button
+                    type="button"
+                    class="btn btn-sample"
+                    onclick="loadSample()"
+                >
+                    ✨ Load Sample
+                </button>
 
-                    <span class="group-number">
+                <button
+                    type="button"
+                    class="btn btn-reset"
+                    onclick="resetForm()"
+                >
+                    ↻ Reset
+                </button>
+
+            </div>
+
+
+            <!-- ================= MEAN ================= -->
+
+            <div class="feature-section">
+
+                <div class="feature-title">
+
+                    <div class="feature-number">
                         01
-                    </span>
+                    </div>
 
                     <div>
-
-                        <h4>
-                            Mean Features
-                        </h4>
-
-                        <p>
-                            Giá trị trung bình
-                        </p>
-
+                        <h4>Mean Features</h4>
+                        <p>Average measurements of the tumor</p>
                     </div>
 
                 </div>
@@ -154,54 +154,54 @@
 
                 <div class="input-grid">
 
-                    <div class="input-box">
+                    <div class="input-group">
                         <label>Mean Radius</label>
-                        <input id="mean radius" type="number" step="any" value="17.99">
+                        <input id="mean radius" type="number" step="any">
                     </div>
 
-                    <div class="input-box">
+                    <div class="input-group">
                         <label>Mean Texture</label>
-                        <input id="mean texture" type="number" step="any" value="10.38">
+                        <input id="mean texture" type="number" step="any">
                     </div>
 
-                    <div class="input-box">
+                    <div class="input-group">
                         <label>Mean Perimeter</label>
-                        <input id="mean perimeter" type="number" step="any" value="122.8">
+                        <input id="mean perimeter" type="number" step="any">
                     </div>
 
-                    <div class="input-box">
+                    <div class="input-group">
                         <label>Mean Area</label>
-                        <input id="mean area" type="number" step="any" value="1001">
+                        <input id="mean area" type="number" step="any">
                     </div>
 
-                    <div class="input-box">
+                    <div class="input-group">
                         <label>Mean Smoothness</label>
-                        <input id="mean smoothness" type="number" step="any" value="0.1184">
+                        <input id="mean smoothness" type="number" step="any">
                     </div>
 
-                    <div class="input-box">
+                    <div class="input-group">
                         <label>Mean Compactness</label>
-                        <input id="mean compactness" type="number" step="any" value="0.2776">
+                        <input id="mean compactness" type="number" step="any">
                     </div>
 
-                    <div class="input-box">
+                    <div class="input-group">
                         <label>Mean Concavity</label>
-                        <input id="mean concavity" type="number" step="any" value="0.3001">
+                        <input id="mean concavity" type="number" step="any">
                     </div>
 
-                    <div class="input-box">
+                    <div class="input-group">
                         <label>Mean Concave Points</label>
-                        <input id="mean concave points" type="number" step="any" value="0.1471">
+                        <input id="mean concave points" type="number" step="any">
                     </div>
 
-                    <div class="input-box">
+                    <div class="input-group">
                         <label>Mean Symmetry</label>
-                        <input id="mean symmetry" type="number" step="any" value="0.2419">
+                        <input id="mean symmetry" type="number" step="any">
                     </div>
 
-                    <div class="input-box">
+                    <div class="input-group">
                         <label>Mean Fractal Dimension</label>
-                        <input id="mean fractal dimension" type="number" step="any" value="0.07871">
+                        <input id="mean fractal dimension" type="number" step="any">
                     </div>
 
                 </div>
@@ -209,26 +209,19 @@
             </div>
 
 
-            <!-- ERROR -->
+            <!-- ================= ERROR ================= -->
 
-            <div class="feature-group">
+            <div class="feature-section">
 
-                <div class="group-title">
+                <div class="feature-title">
 
-                    <span class="group-number">
+                    <div class="feature-number">
                         02
-                    </span>
+                    </div>
 
                     <div>
-
-                        <h4>
-                            Error Features
-                        </h4>
-
-                        <p>
-                            Sai số đo lường
-                        </p>
-
+                        <h4>Standard Error Features</h4>
+                        <p>Measurement error characteristics</p>
                     </div>
 
                 </div>
@@ -236,54 +229,54 @@
 
                 <div class="input-grid">
 
-                    <div class="input-box">
+                    <div class="input-group">
                         <label>Radius Error</label>
-                        <input id="radius error" type="number" step="any" value="1.095">
+                        <input id="radius error" type="number" step="any">
                     </div>
 
-                    <div class="input-box">
+                    <div class="input-group">
                         <label>Texture Error</label>
-                        <input id="texture error" type="number" step="any" value="0.9053">
+                        <input id="texture error" type="number" step="any">
                     </div>
 
-                    <div class="input-box">
+                    <div class="input-group">
                         <label>Perimeter Error</label>
-                        <input id="perimeter error" type="number" step="any" value="8.589">
+                        <input id="perimeter error" type="number" step="any">
                     </div>
 
-                    <div class="input-box">
+                    <div class="input-group">
                         <label>Area Error</label>
-                        <input id="area error" type="number" step="any" value="153.4">
+                        <input id="area error" type="number" step="any">
                     </div>
 
-                    <div class="input-box">
+                    <div class="input-group">
                         <label>Smoothness Error</label>
-                        <input id="smoothness error" type="number" step="any" value="0.006399">
+                        <input id="smoothness error" type="number" step="any">
                     </div>
 
-                    <div class="input-box">
+                    <div class="input-group">
                         <label>Compactness Error</label>
-                        <input id="compactness error" type="number" step="any" value="0.04904">
+                        <input id="compactness error" type="number" step="any">
                     </div>
 
-                    <div class="input-box">
+                    <div class="input-group">
                         <label>Concavity Error</label>
-                        <input id="concavity error" type="number" step="any" value="0.05373">
+                        <input id="concavity error" type="number" step="any">
                     </div>
 
-                    <div class="input-box">
+                    <div class="input-group">
                         <label>Concave Points Error</label>
-                        <input id="concave points error" type="number" step="any" value="0.01587">
+                        <input id="concave points error" type="number" step="any">
                     </div>
 
-                    <div class="input-box">
+                    <div class="input-group">
                         <label>Symmetry Error</label>
-                        <input id="symmetry error" type="number" step="any" value="0.03003">
+                        <input id="symmetry error" type="number" step="any">
                     </div>
 
-                    <div class="input-box">
+                    <div class="input-group">
                         <label>Fractal Dimension Error</label>
-                        <input id="fractal dimension error" type="number" step="any" value="0.006193">
+                        <input id="fractal dimension error" type="number" step="any">
                     </div>
 
                 </div>
@@ -291,26 +284,19 @@
             </div>
 
 
-            <!-- WORST -->
+            <!-- ================= WORST ================= -->
 
-            <div class="feature-group">
+            <div class="feature-section">
 
-                <div class="group-title">
+                <div class="feature-title">
 
-                    <span class="group-number">
+                    <div class="feature-number">
                         03
-                    </span>
+                    </div>
 
                     <div>
-
-                        <h4>
-                            Worst Features
-                        </h4>
-
-                        <p>
-                            Giá trị lớn nhất
-                        </p>
-
+                        <h4>Worst Features</h4>
+                        <p>Largest / most extreme measurements</p>
                     </div>
 
                 </div>
@@ -318,54 +304,54 @@
 
                 <div class="input-grid">
 
-                    <div class="input-box">
+                    <div class="input-group">
                         <label>Worst Radius</label>
-                        <input id="worst radius" type="number" step="any" value="25.38">
+                        <input id="worst radius" type="number" step="any">
                     </div>
 
-                    <div class="input-box">
+                    <div class="input-group">
                         <label>Worst Texture</label>
-                        <input id="worst texture" type="number" step="any" value="17.33">
+                        <input id="worst texture" type="number" step="any">
                     </div>
 
-                    <div class="input-box">
+                    <div class="input-group">
                         <label>Worst Perimeter</label>
-                        <input id="worst perimeter" type="number" step="any" value="184.6">
+                        <input id="worst perimeter" type="number" step="any">
                     </div>
 
-                    <div class="input-box">
+                    <div class="input-group">
                         <label>Worst Area</label>
-                        <input id="worst area" type="number" step="any" value="2019">
+                        <input id="worst area" type="number" step="any">
                     </div>
 
-                    <div class="input-box">
+                    <div class="input-group">
                         <label>Worst Smoothness</label>
-                        <input id="worst smoothness" type="number" step="any" value="0.1622">
+                        <input id="worst smoothness" type="number" step="any">
                     </div>
 
-                    <div class="input-box">
+                    <div class="input-group">
                         <label>Worst Compactness</label>
-                        <input id="worst compactness" type="number" step="any" value="0.6656">
+                        <input id="worst compactness" type="number" step="any">
                     </div>
 
-                    <div class="input-box">
+                    <div class="input-group">
                         <label>Worst Concavity</label>
-                        <input id="worst concavity" type="number" step="any" value="0.7119">
+                        <input id="worst concavity" type="number" step="any">
                     </div>
 
-                    <div class="input-box">
+                    <div class="input-group">
                         <label>Worst Concave Points</label>
-                        <input id="worst concave points" type="number" step="any" value="0.2654">
+                        <input id="worst concave points" type="number" step="any">
                     </div>
 
-                    <div class="input-box">
+                    <div class="input-group">
                         <label>Worst Symmetry</label>
-                        <input id="worst symmetry" type="number" step="any" value="0.4601">
+                        <input id="worst symmetry" type="number" step="any">
                     </div>
 
-                    <div class="input-box">
+                    <div class="input-group">
                         <label>Worst Fractal Dimension</label>
-                        <input id="worst fractal dimension" type="number" step="any" value="0.1189">
+                        <input id="worst fractal dimension" type="number" step="any">
                     </div>
 
                 </div>
@@ -373,227 +359,347 @@
             </div>
 
 
-            <!-- BUTTON -->
+            <!-- PREDICT BUTTON -->
 
             <button
-                id="predictButton"
+                type="button"
                 class="predict-button"
                 onclick="predict()"
+                id="predictBtn"
             >
-
-                <span id="buttonText">
-                    🔍 Predict Result
-                </span>
-
-                <span
-                    id="loading"
-                    class="loading hidden"
-                >
-                    <span class="spinner"></span>
-                    Predicting...
-                </span>
-
+                <span>🔍</span>
+                Predict Classification
             </button>
 
+            <div id="errorMessage" class="error-message"></div>
 
         </section>
 
 
-        <!-- RESULT -->
+        <!-- ================= RESULT CARD ================= -->
 
-        <section
-            id="resultCard"
-            class="result-card hidden"
-        >
+        <aside class="card result-card">
 
-            <div class="result-header">
+            <div class="card-header">
 
                 <div>
-
-                    <span class="result-label">
-                        PREDICTION RESULT
-                    </span>
-
-                    <h3 id="resultTitle">
-                        -
-                    </h3>
-
-                </div>
-
-                <div
-                    id="resultIcon"
-                    class="result-icon"
-                >
-                    ?
+                    <span class="section-label">MODEL OUTPUT</span>
+                    <h3>Prediction Result</h3>
                 </div>
 
             </div>
 
 
-            <div class="probability-container">
+            <!-- EMPTY RESULT -->
 
-                <div class="probability-item">
+            <div id="emptyResult" class="empty-result">
 
-                    <div class="probability-top">
+                <div class="empty-icon">
+                    🧠
+                </div>
+
+                <h4>Ready for prediction</h4>
+
+                <p>
+                    Enter the 30 tumor characteristics
+                    and click Predict Classification.
+                </p>
+
+            </div>
+
+
+            <!-- RESULT -->
+
+            <div id="resultContent" class="result-content hidden">
+
+                <div id="resultBadge" class="result-badge">
+                    MALIGNANT
+                </div>
+
+                <div class="result-label">
+                    Predicted Classification
+                </div>
+
+                <div id="predictionText" class="prediction-text">
+                    Malignant
+                </div>
+
+
+                <!-- PROBABILITY -->
+
+                <div class="probability-section">
+
+                    <div class="probability-header">
 
                         <span>
-                            Malignant
+                            Malignant probability
                         </span>
 
-                        <strong id="malignantProbability">
+                        <strong id="malignantPercent">
                             0%
                         </strong>
 
                     </div>
 
                     <div class="progress">
-
                         <div
                             id="malignantBar"
-                            class="progress-bar malignant"
+                            class="progress-bar malignant-bar"
                         ></div>
-
                     </div>
 
-                </div>
 
-
-                <div class="probability-item">
-
-                    <div class="probability-top">
+                    <div class="probability-header">
 
                         <span>
-                            Benign
+                            Benign probability
                         </span>
 
-                        <strong id="benignProbability">
+                        <strong id="benignPercent">
                             0%
                         </strong>
 
                     </div>
 
                     <div class="progress">
-
                         <div
                             id="benignBar"
-                            class="progress-bar benign"
+                            class="progress-bar benign-bar"
                         ></div>
-
                     </div>
 
                 </div>
 
+
+                <!-- MODEL INFO -->
+
+                <div class="model-info">
+
+                    <div>
+                        <span>Model</span>
+                        <strong>SVM RBF</strong>
+                    </div>
+
+                    <div>
+                        <span>Version</span>
+                        <strong id="modelVersion">
+                            1.0.0
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="warning-box">
+                    ⚠️
+                    <span id="warningText">
+                        Educational use only; not a medical diagnosis.
+                    </span>
+                </div>
+
             </div>
 
-
-            <div class="warning">
-
-                ⚠️
-
-                <span>
-                    Educational use only; not a medical diagnosis.
-                </span>
-
-            </div>
-
-        </section>
-
+        </aside>
 
     </main>
 
 
-    <!-- FOOTER -->
+    <!-- ================= FOOTER ================= -->
 
     <footer>
 
-        <span>
-            Breast Cancer SVM API
-        </span>
+        <div>
+            Breast Cancer SVM · Educational Machine Learning Demo
+        </div>
 
-        <span>
-            Model v1.0.0 · FastAPI
-        </span>
+        <div>
+            FastAPI · Scikit-learn · SVM
+        </div>
 
     </footer>
-
 
 </div>
 
 
 <script>
 
-const featureNames = [
+/* =========================================================
+   SAMPLE DATA
+   ========================================================= */
 
-    "mean radius",
-    "mean texture",
-    "mean perimeter",
-    "mean area",
-    "mean smoothness",
-    "mean compactness",
-    "mean concavity",
-    "mean concave points",
-    "mean symmetry",
-    "mean fractal dimension",
+const sampleData = {
 
-    "radius error",
-    "texture error",
-    "perimeter error",
-    "area error",
-    "smoothness error",
-    "compactness error",
-    "concavity error",
-    "concave points error",
-    "symmetry error",
-    "fractal dimension error",
+    "mean radius": 17.99,
+    "mean texture": 10.38,
+    "mean perimeter": 122.8,
+    "mean area": 1001.0,
+    "mean smoothness": 0.1184,
+    "mean compactness": 0.2776,
+    "mean concavity": 0.3001,
+    "mean concave points": 0.1471,
+    "mean symmetry": 0.2419,
+    "mean fractal dimension": 0.07871,
 
-    "worst radius",
-    "worst texture",
-    "worst perimeter",
-    "worst area",
-    "worst smoothness",
-    "worst compactness",
-    "worst concavity",
-    "worst concave points",
-    "worst symmetry",
-    "worst fractal dimension"
+    "radius error": 1.095,
+    "texture error": 0.9053,
+    "perimeter error": 8.589,
+    "area error": 153.4,
+    "smoothness error": 0.006399,
+    "compactness error": 0.04904,
+    "concavity error": 0.05373,
+    "concave points error": 0.01587,
+    "symmetry error": 0.03003,
+    "fractal dimension error": 0.006193,
 
-];
+    "worst radius": 25.38,
+    "worst texture": 17.33,
+    "worst perimeter": 184.6,
+    "worst area": 2019.0,
+    "worst smoothness": 0.1622,
+    "worst compactness": 0.6656,
+    "worst concavity": 0.7119,
+    "worst concave points": 0.2654,
+    "worst symmetry": 0.4601,
+    "worst fractal dimension": 0.1189
 
+};
+
+
+/* =========================================================
+   LOAD SAMPLE
+   ========================================================= */
+
+function loadSample() {
+
+    Object.entries(sampleData).forEach(
+        ([name, value]) => {
+
+            const input =
+                document.getElementById(name);
+
+            if (input) {
+                input.value = value;
+            }
+
+        }
+    );
+
+    showMessage(
+        "Sample data loaded successfully.",
+        "success"
+    );
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+function resetForm() {
+
+    document
+        .querySelectorAll(".input-group input")
+        .forEach(input => {
+            input.value = "";
+        });
+
+    document
+        .getElementById("resultContent")
+        .classList.add("hidden");
+
+    document
+        .getElementById("emptyResult")
+        .classList.remove("hidden");
+
+    document
+        .getElementById("errorMessage")
+        .innerText = "";
+
+}
+
+
+/* =========================================================
+   GET FEATURES
+   ========================================================= */
+
+function getFeatures() {
+
+    const features = {};
+
+    const inputs =
+        document.querySelectorAll(
+            ".input-group input"
+        );
+
+    const missing = [];
+
+    inputs.forEach(input => {
+
+        const value = input.value.trim();
+
+        if (value === "") {
+
+            missing.push(input.id);
+
+        } else {
+
+            features[input.id] =
+                Number(value);
+
+        }
+
+    });
+
+
+    if (missing.length > 0) {
+
+        throw new Error(
+            "Please enter all 30 features before prediction."
+        );
+
+    }
+
+
+    return features;
+
+}
+
+
+/* =========================================================
+   PREDICT
+   ========================================================= */
 
 async function predict() {
 
     const button =
-        document.getElementById("predictButton");
+        document.getElementById("predictBtn");
 
-    const buttonText =
-        document.getElementById("buttonText");
+    const error =
+        document.getElementById("errorMessage");
 
-    const loading =
-        document.getElementById("loading");
 
-    const resultCard =
-        document.getElementById("resultCard");
+    error.innerText = "";
+
+
+    let features;
+
+    try {
+
+        features = getFeatures();
+
+    } catch (err) {
+
+        error.innerText = err.message;
+
+        return;
+
+    }
 
 
     button.disabled = true;
 
-    buttonText.classList.add("hidden");
-
-    loading.classList.remove("hidden");
-
-
-    const features = {};
-
-
-    for (const name of featureNames) {
-
-        const input =
-            document.getElementById(name);
-
-        features[name] =
-            parseFloat(input.value);
-
-    }
+    button.innerHTML =
+        "<span>⏳</span> Predicting...";
 
 
     try {
@@ -604,7 +710,8 @@ async function predict() {
                 method: "POST",
 
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type":
+                        "application/json"
                 },
 
                 body: JSON.stringify({
@@ -622,110 +729,203 @@ async function predict() {
 
             throw new Error(
                 data.detail?.message ||
-                "Prediction failed"
+                "Prediction failed."
             );
 
         }
 
 
-        const malignant =
-            data.probability_malignant * 100;
-
-        const benign =
-            data.probability_benign * 100;
+        showResult(data);
 
 
-        document.getElementById(
-            "malignantProbability"
-        ).textContent =
-            malignant.toFixed(2) + "%";
+    } catch (err) {
 
+        error.innerText =
+            "Unable to connect to prediction API.";
 
-        document.getElementById(
-            "benignProbability"
-        ).textContent =
-            benign.toFixed(2) + "%";
-
-
-        document.getElementById(
-            "malignantBar"
-        ).style.width =
-            malignant + "%";
-
-
-        document.getElementById(
-            "benignBar"
-        ).style.width =
-            benign + "%";
-
-
-        const title =
-            document.getElementById("resultTitle");
-
-        const icon =
-            document.getElementById("resultIcon");
-
-
-        if (data.predicted_class === 0) {
-
-            title.textContent =
-                "Malignant";
-
-            title.className =
-                "result-title malignant-text";
-
-            icon.textContent =
-                "⚠";
-
-            icon.className =
-                "result-icon malignant-icon";
-
-        } else {
-
-            title.textContent =
-                "Benign";
-
-            title.className =
-                "result-title benign-text";
-
-            icon.textContent =
-                "✓";
-
-            icon.className =
-                "result-icon benign-icon";
-
-        }
-
-
-        resultCard.classList.remove("hidden");
-
-        resultCard.scrollIntoView({
-            behavior: "smooth",
-            block: "center"
-        });
-
-
-    } catch (error) {
-
-        alert(
-            "Không thể thực hiện dự đoán: " +
-            error.message
-        );
+        console.error(err);
 
     }
 
 
     button.disabled = false;
 
-    buttonText.classList.remove("hidden");
-
-    loading.classList.add("hidden");
+    button.innerHTML =
+        "<span>🔍</span> Predict Classification";
 
 }
 
+
+/* =========================================================
+   SHOW RESULT
+   ========================================================= */
+
+function showResult(data) {
+
+    const empty =
+        document.getElementById(
+            "emptyResult"
+        );
+
+    const result =
+        document.getElementById(
+            "resultContent"
+        );
+
+    const badge =
+        document.getElementById(
+            "resultBadge"
+        );
+
+    const prediction =
+        document.getElementById(
+            "predictionText"
+        );
+
+
+    empty.classList.add("hidden");
+
+    result.classList.remove("hidden");
+
+
+    const malignant =
+        data.probability_malignant * 100;
+
+    const benign =
+        data.probability_benign * 100;
+
+
+    document.getElementById(
+        "malignantPercent"
+    ).innerText =
+        malignant.toFixed(2) + "%";
+
+
+    document.getElementById(
+        "benignPercent"
+    ).innerText =
+        benign.toFixed(2) + "%";
+
+
+    document.getElementById(
+        "malignantBar"
+    ).style.width =
+        malignant + "%";
+
+
+    document.getElementById(
+        "benignBar"
+    ).style.width =
+        benign + "%";
+
+
+    prediction.innerText =
+        data.predicted_label
+            .charAt(0)
+            .toUpperCase()
+        +
+        data.predicted_label
+            .slice(1);
+
+
+    badge.innerText =
+        data.predicted_label
+            .toUpperCase();
+
+
+    if (
+        data.predicted_label
+            .toLowerCase()
+        === "malignant"
+    ) {
+
+        badge.className =
+            "result-badge malignant";
+
+        prediction.className =
+            "prediction-text malignant-text";
+
+    } else {
+
+        badge.className =
+            "result-badge benign";
+
+        prediction.className =
+            "prediction-text benign-text";
+
+    }
+
+
+    document.getElementById(
+        "modelVersion"
+    ).innerText =
+        data.model_version;
+
+
+    document.getElementById(
+        "warningText"
+    ).innerText =
+        data.warning;
+
+}
+
+
+/* =========================================================
+   MESSAGE
+   ========================================================= */
+
+function showMessage(message, type) {
+
+    const error =
+        document.getElementById(
+            "errorMessage"
+        );
+
+    error.innerText = message;
+
+    if (type === "success") {
+
+        error.className =
+            "error-message success-message";
+
+    }
+
+}
+
+
+/* =========================================================
+   HEALTH CHECK
+   ========================================================= */
+
+async function checkAPI() {
+
+    try {
+
+        const response =
+            await fetch("/health");
+
+        if (!response.ok) {
+            throw new Error();
+        }
+
+        console.log(
+            "API connection: OK"
+        );
+
+    } catch {
+
+        console.log(
+            "API connection failed"
+        );
+
+    }
+
+}
+
+
+checkAPI();
+
 </script>
 
-
 </body>
-
 </html>
