@@ -2,109 +2,163 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <title>Create Account - Breast Cancer SVM</title>
 
-    <title>Login - Breast Cancer SVM</title>
-
-    <link
-        rel="stylesheet"
-        href="/static/style.css"
-    >
-
+    <link rel="stylesheet" href="/static/style.css">
 </head>
+
 
 <body class="auth-page">
 
-<div class="auth-container">
-
     <div class="auth-card">
 
+        <!-- Logo -->
         <div class="auth-logo">
             🧬
         </div>
 
-        <div class="auth-title">
 
-            <h1>Welcome Back</h1>
+        <!-- Title -->
+        <h1>Create Account</h1>
 
-            <p>
-                Login to Breast Cancer SVM
-            </p>
-
-        </div>
+        <p class="auth-subtitle">
+            Create your account to use Breast Cancer SVM
+        </p>
 
 
-        {% if error %}
-
-        <div class="auth-error">
+        <!-- Error message -->
+        <div
+            id="error-message"
+            class="auth-error"
+        >
             {{ error }}
         </div>
 
-        {% endif %}
 
-
+        <!-- Register form -->
         <form
-            method="POST"
-            action="/login"
+            method="post"
+            action="/register"
         >
 
-            <div class="auth-input">
+            <!-- Username -->
+            <div class="form-group">
 
-                <label>Username</label>
+                <label for="username">
+                    Username
+                </label>
 
                 <input
                     type="text"
+                    id="username"
                     name="username"
                     placeholder="Enter username"
+                    minlength="3"
                     required
                 >
 
             </div>
 
 
-            <div class="auth-input">
+            <!-- Email -->
+            <div class="form-group">
 
-                <label>Password</label>
+                <label for="email">
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter email"
+                    required
+                >
+
+            </div>
+
+
+            <!-- Password -->
+            <div class="form-group">
+
+                <label for="password">
+                    Password
+                </label>
 
                 <input
                     type="password"
+                    id="password"
                     name="password"
-                    placeholder="Enter password"
+                    placeholder="Create password"
+                    minlength="6"
                     required
                 >
 
             </div>
 
 
+            <!-- Confirm password -->
+            <div class="form-group">
+
+                <label for="confirm_password">
+                    Confirm Password
+                </label>
+
+                <input
+                    type="password"
+                    id="confirm_password"
+                    name="confirm_password"
+                    placeholder="Confirm password"
+                    minlength="6"
+                    required
+                >
+
+            </div>
+
+
+            <!-- Button -->
             <button
                 type="submit"
                 class="auth-button"
             >
-                Login
+                Create Account
             </button>
 
         </form>
 
 
-        <div class="auth-footer">
+        <!-- Login -->
+        <p class="auth-footer">
 
-            Don't have an account?
+            Already have an account?
 
-            <a href="/register">
-                Create Account
+            <a href="/login">
+                Login
             </a>
 
-        </div>
+        </p>
 
     </div>
 
-</div>
+
+    <script>
+
+        const errorMessage =
+            document.getElementById("error-message");
+
+        if (
+            !errorMessage.textContent.trim()
+        ) {
+
+            errorMessage.style.display = "none";
+
+        }
+
+    </script>
 
 </body>
+
 </html>

@@ -372,10 +372,14 @@ def register_page():
         REGISTER_TEMPLATE_PATH
     )
 
+    html = html.replace(
+        "{{ error }}",
+        ""
+    )
+
     return HTMLResponse(
         content=html
     )
-
 
 # =========================================================
 # REGISTER - POST
