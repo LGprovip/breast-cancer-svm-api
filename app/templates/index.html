@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 
 <head>
 
@@ -10,11 +10,16 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Breast Cancer SVM</title>
+    <meta
+        name="theme-color"
+        content="#07111f"
+    >
+
+    <title>Breast Cancer AI • SVM Diagnostic Lab</title>
 
     <link
         rel="stylesheet"
-        href="/static/style.css"
+        href="/static/style.css?v=20"
     >
 
 </head>
@@ -22,89 +27,211 @@
 
 <body>
 
-<div class="page">
+<!-- ===================================================== -->
+<!-- BACKGROUND EFFECT -->
+<!-- ===================================================== -->
 
-    <!-- ================= HEADER ================= -->
+<div class="background-grid"></div>
 
-    <header class="header">
+<div class="orb orb-one"></div>
+<div class="orb orb-two"></div>
+<div class="orb orb-three"></div>
 
-        <div class="brand">
 
-            <div class="brand-icon">
-                🩺
+<!-- ===================================================== -->
+<!-- NAVBAR -->
+<!-- ===================================================== -->
+
+<header class="topbar">
+
+    <div class="brand">
+
+        <div class="brand-icon">
+            🧬
+        </div>
+
+        <div>
+
+            <div class="brand-name">
+                Breast Cancer<span>AI</span>
             </div>
 
-            <div>
-
-                <h1>Breast Cancer SVM</h1>
-
-                <p>
-                    Breast Cancer Wisconsin Classification
-                </p>
-
+            <div class="brand-status">
+                <span class="status-dot"></span>
+                SVM ENGINE ONLINE
             </div>
 
         </div>
 
+    </div>
 
-        <div class="header-actions">
 
-            <div class="user-info">
-                👤 Xin chào, {{ username }}
-            </div>
+    <div class="nav-actions">
 
-            <a
-                class="docs-button"
-                href="/docs"
-                target="_blank"
-            >
-                API Docs ↗
-            </a>
-
-            <a
-                class="logout-button"
-                href="/logout"
-            >
-                Đăng xuất
-            </a>
-
+        <div class="user-pill">
+            <span class="user-avatar">👤</span>
+            <span>{{ username }}</span>
         </div>
 
-    </header>
+        <a
+            href="/docs"
+            target="_blank"
+            class="nav-button"
+        >
+            API Docs
+        </a>
+
+        <button
+            id="themeButton"
+            class="icon-button"
+            title="Change theme"
+        >
+            ☾
+        </button>
+
+        <a
+            href="/logout"
+            class="logout-button"
+        >
+            Logout
+        </a>
+
+    </div>
+
+</header>
 
 
-    <!-- ================= HERO ================= -->
+<!-- ===================================================== -->
+<!-- MAIN -->
+<!-- ===================================================== -->
+
+<main class="container">
+
+
+    <!-- HERO -->
 
     <section class="hero">
 
         <div class="hero-content">
 
-            <div class="badge">
-                ● SVM RBF MODEL
+            <div class="eyebrow">
+                <span>AI</span>
+                MACHINE LEARNING
+                <span>●</span>
+                MEDICAL DATA
             </div>
 
-            <h2>
+
+            <h1>
                 Breast Cancer
-                <span>Prediction</span>
-            </h2>
+                <strong>AI Analysis</strong>
+            </h1>
+
 
             <p>
-                Nhập 30 đặc trưng hình thái học của tế bào
-                để thực hiện dự đoán bằng mô hình
-                Support Vector Machine.
+                Intelligent classification powered by
+                <b>Support Vector Machine</b>
+                and the Breast Cancer Wisconsin dataset.
             </p>
+
+
+            <div class="hero-badges">
+
+                <div class="hero-badge">
+                    <span>⚡</span>
+                    RBF SVM
+                </div>
+
+                <div class="hero-badge">
+                    <span>🎯</span>
+                    High Sensitivity
+                </div>
+
+                <div class="hero-badge">
+                    <span>🔐</span>
+                    Authenticated
+                </div>
+
+            </div>
 
         </div>
 
 
-        <div class="hero-stat">
+        <div class="hero-visual">
 
-            <div class="stat-number">
+            <div class="scanner-ring ring-one"></div>
+            <div class="scanner-ring ring-two"></div>
+            <div class="scanner-ring ring-three"></div>
+
+            <div class="dna-core">
+                🧬
+            </div>
+
+            <div class="scan-line"></div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- SYSTEM STATUS -->
+
+    <section class="system-panel">
+
+        <div class="system-item">
+
+            <div class="system-icon">
+                ◉
+            </div>
+
+            <div>
+                <small>MODEL</small>
+                <strong>RBF SVM</strong>
+            </div>
+
+        </div>
+
+
+        <div class="system-item">
+
+            <div class="system-icon">
+                ✓
+            </div>
+
+            <div>
+                <small>STATUS</small>
+                <strong class="online">
+                    ONLINE
+                </strong>
+            </div>
+
+        </div>
+
+
+        <div class="system-item">
+
+            <div class="system-icon">
                 30
             </div>
 
-            <div class="stat-label">
-                FEATURES
+            <div>
+                <small>FEATURES</small>
+                <strong>30 INPUTS</strong>
+            </div>
+
+        </div>
+
+
+        <div class="system-item">
+
+            <div class="system-icon">
+                v1
+            </div>
+
+            <div>
+                <small>VERSION</small>
+                <strong>1.0.0</strong>
             </div>
 
         </div>
@@ -112,462 +239,294 @@
     </section>
 
 
-    <!-- ================= MAIN ================= -->
 
-    <main class="content">
+    <!-- INPUT CARD -->
 
+    <section class="glass-card">
 
-        <!-- ================= INPUT CARD ================= -->
+        <div class="section-heading">
 
-        <section class="card">
+            <div>
 
-            <div class="card-header">
-
-                <div>
-
-                    <h3>
-                        Input Features
-                    </h3>
-
-                    <p>
-                        Nhập các thông số của mẫu cần dự đoán
-                    </p>
-
+                <div class="section-kicker">
+                    INPUT MATRIX
                 </div>
 
-                <div class="feature-count">
-                    30 inputs
-                </div>
+                <h2>
+                    Morphological Parameters
+                </h2>
+
+                <p>
+                    Enter the 30 cellular morphology
+                    measurements used by the SVM model.
+                </p>
 
             </div>
 
 
-            <!-- ACTION BUTTONS -->
+            <div class="feature-counter">
 
-            <div class="form-actions">
+                <span id="filledCount">0</span>
+                <span>/</span>
+                <span>30</span>
 
-                <button
-                    type="button"
-                    class="sample-button"
-                    onclick="loadSample()"
-                >
-                    📋 Dùng dữ liệu mẫu
-                </button>
-
-                <button
-                    type="button"
-                    class="clear-button"
-                    onclick="clearForm()"
-                >
-                    ↺ Xóa dữ liệu
-                </button>
+                <small>
+                    fields completed
+                </small>
 
             </div>
 
+        </div>
 
-            <!-- ================= MEAN ================= -->
 
-            <div class="feature-group">
+        <!-- QUICK ACTIONS -->
 
-                <div class="group-title">
-
-                    <span class="group-number">
-                        01
-                    </span>
-
-                    <div>
-
-                        <h4>
-                            Mean Features
-                        </h4>
-
-                        <p>
-                            Giá trị trung bình
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="input-grid">
-
-                    <div class="input-box">
-                        <label>Mean Radius</label>
-                        <input id="mean radius" type="number" step="any">
-                    </div>
-
-                    <div class="input-box">
-                        <label>Mean Texture</label>
-                        <input id="mean texture" type="number" step="any">
-                    </div>
-
-                    <div class="input-box">
-                        <label>Mean Perimeter</label>
-                        <input id="mean perimeter" type="number" step="any">
-                    </div>
-
-                    <div class="input-box">
-                        <label>Mean Area</label>
-                        <input id="mean area" type="number" step="any">
-                    </div>
-
-                    <div class="input-box">
-                        <label>Mean Smoothness</label>
-                        <input id="mean smoothness" type="number" step="any">
-                    </div>
-
-                    <div class="input-box">
-                        <label>Mean Compactness</label>
-                        <input id="mean compactness" type="number" step="any">
-                    </div>
-
-                    <div class="input-box">
-                        <label>Mean Concavity</label>
-                        <input id="mean concavity" type="number" step="any">
-                    </div>
-
-                    <div class="input-box">
-                        <label>Mean Concave Points</label>
-                        <input id="mean concave points" type="number" step="any">
-                    </div>
-
-                    <div class="input-box">
-                        <label>Mean Symmetry</label>
-                        <input id="mean symmetry" type="number" step="any">
-                    </div>
-
-                    <div class="input-box">
-                        <label>Mean Fractal Dimension</label>
-                        <input id="mean fractal dimension" type="number" step="any">
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- ================= ERROR ================= -->
-
-            <div class="feature-group">
-
-                <div class="group-title">
-
-                    <span class="group-number">
-                        02
-                    </span>
-
-                    <div>
-
-                        <h4>
-                            Error Features
-                        </h4>
-
-                        <p>
-                            Sai số đo lường
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="input-grid">
-
-                    <div class="input-box">
-                        <label>Radius Error</label>
-                        <input id="radius error" type="number" step="any">
-                    </div>
-
-                    <div class="input-box">
-                        <label>Texture Error</label>
-                        <input id="texture error" type="number" step="any">
-                    </div>
-
-                    <div class="input-box">
-                        <label>Perimeter Error</label>
-                        <input id="perimeter error" type="number" step="any">
-                    </div>
-
-                    <div class="input-box">
-                        <label>Area Error</label>
-                        <input id="area error" type="number" step="any">
-                    </div>
-
-                    <div class="input-box">
-                        <label>Smoothness Error</label>
-                        <input id="smoothness error" type="number" step="any">
-                    </div>
-
-                    <div class="input-box">
-                        <label>Compactness Error</label>
-                        <input id="compactness error" type="number" step="any">
-                    </div>
-
-                    <div class="input-box">
-                        <label>Concavity Error</label>
-                        <input id="concavity error" type="number" step="any">
-                    </div>
-
-                    <div class="input-box">
-                        <label>Concave Points Error</label>
-                        <input id="concave points error" type="number" step="any">
-                    </div>
-
-                    <div class="input-box">
-                        <label>Symmetry Error</label>
-                        <input id="symmetry error" type="number" step="any">
-                    </div>
-
-                    <div class="input-box">
-                        <label>Fractal Dimension Error</label>
-                        <input id="fractal dimension error" type="number" step="any">
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- ================= WORST ================= -->
-
-            <div class="feature-group">
-
-                <div class="group-title">
-
-                    <span class="group-number">
-                        03
-                    </span>
-
-                    <div>
-
-                        <h4>
-                            Worst Features
-                        </h4>
-
-                        <p>
-                            Giá trị lớn nhất
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="input-grid">
-
-                    <div class="input-box">
-                        <label>Worst Radius</label>
-                        <input id="worst radius" type="number" step="any">
-                    </div>
-
-                    <div class="input-box">
-                        <label>Worst Texture</label>
-                        <input id="worst texture" type="number" step="any">
-                    </div>
-
-                    <div class="input-box">
-                        <label>Worst Perimeter</label>
-                        <input id="worst perimeter" type="number" step="any">
-                    </div>
-
-                    <div class="input-box">
-                        <label>Worst Area</label>
-                        <input id="worst area" type="number" step="any">
-                    </div>
-
-                    <div class="input-box">
-                        <label>Worst Smoothness</label>
-                        <input id="worst smoothness" type="number" step="any">
-                    </div>
-
-                    <div class="input-box">
-                        <label>Worst Compactness</label>
-                        <input id="worst compactness" type="number" step="any">
-                    </div>
-
-                    <div class="input-box">
-                        <label>Worst Concavity</label>
-                        <input id="worst concavity" type="number" step="any">
-                    </div>
-
-                    <div class="input-box">
-                        <label>Worst Concave Points</label>
-                        <input id="worst concave points" type="number" step="any">
-                    </div>
-
-                    <div class="input-box">
-                        <label>Worst Symmetry</label>
-                        <input id="worst symmetry" type="number" step="any">
-                    </div>
-
-                    <div class="input-box">
-                        <label>Worst Fractal Dimension</label>
-                        <input id="worst fractal dimension" type="number" step="any">
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- ================= PREDICT BUTTON ================= -->
+        <div class="quick-actions">
 
             <button
-                id="predictButton"
-                class="predict-button"
-                onclick="predict()"
+                type="button"
+                id="sampleButton"
+                class="secondary-button"
             >
-
-                <span id="buttonText">
-                    🔍 Predict Result
-                </span>
-
-                <span
-                    id="loading"
-                    class="loading hidden"
-                >
-                    <span class="spinner"></span>
-                    Predicting...
-                </span>
-
+                <span>✦</span>
+                Load Demo Sample
             </button>
 
 
-        </section>
+            <button
+                type="button"
+                id="clearButton"
+                class="ghost-button"
+            >
+                <span>↻</span>
+                Clear
+            </button>
+
+        </div>
 
 
-        <!-- ================= RESULT ================= -->
+        <!-- FEATURE FORM -->
 
-        <section
-            id="resultCard"
-            class="result-card hidden"
+        <div
+            id="featureGroups"
+            class="feature-groups"
+        ></div>
+
+
+        <!-- PREDICT -->
+
+        <button
+            id="predictButton"
+            class="predict-button"
         >
 
-            <div class="result-header">
+            <span class="predict-icon">
+                ✦
+            </span>
+
+            <span class="predict-text">
+                Run AI Analysis
+            </span>
+
+            <span
+                id="loadingSpinner"
+                class="loading-spinner"
+            ></span>
+
+        </button>
+
+
+        <div class="shortcut-hint">
+            Press <kbd>Ctrl</kbd> + <kbd>Enter</kbd>
+            to analyze
+        </div>
+
+    </section>
+
+
+
+    <!-- RESULT -->
+
+    <section
+        id="resultCard"
+        class="result-card hidden"
+    >
+
+        <div class="result-header">
+
+            <div>
+
+                <div class="section-kicker">
+                    ANALYSIS COMPLETE
+                </div>
+
+                <h2 id="resultTitle">
+                    Classification Result
+                </h2>
+
+            </div>
+
+
+            <div
+                id="resultBadge"
+                class="result-badge"
+            >
+                --
+            </div>
+
+        </div>
+
+
+        <div class="result-main">
+
+
+            <div class="diagnosis-panel">
+
+                <div class="result-icon">
+                    🧬
+                </div>
 
                 <div>
 
                     <span class="result-label">
-                        PREDICTION RESULT
+                        PREDICTED CLASS
                     </span>
 
-                    <h3 id="resultTitle">
-                        -
+                    <h3 id="predictionLabel">
+                        --
                     </h3>
 
-                </div>
+                    <p id="predictionDescription">
+                        --
+                    </p>
 
-                <div
-                    id="resultIcon"
-                    class="result-icon"
-                >
-                    ?
                 </div>
 
             </div>
 
 
-            <!-- PROBABILITIES -->
 
-            <div class="probability-container">
+            <div class="probability-panel">
 
-                <div class="probability-item">
+                <div class="probability-title">
+                    Model Confidence
+                </div>
 
-                    <div class="probability-top">
 
+                <div class="probability-row">
+
+                    <div class="probability-info">
                         <span>
                             Malignant
                         </span>
 
-                        <strong id="malignantProbability">
+                        <strong id="malignantPercent">
                             0%
                         </strong>
-
                     </div>
 
                     <div class="progress">
-
                         <div
                             id="malignantBar"
-                            class="progress-bar malignant"
+                            class="progress-fill malignant"
                         ></div>
-
                     </div>
 
                 </div>
 
 
-                <div class="probability-item">
+                <div class="probability-row">
 
-                    <div class="probability-top">
-
+                    <div class="probability-info">
                         <span>
                             Benign
                         </span>
 
-                        <strong id="benignProbability">
+                        <strong id="benignPercent">
                             0%
                         </strong>
-
                     </div>
 
                     <div class="progress">
-
                         <div
                             id="benignBar"
-                            class="progress-bar benign"
+                            class="progress-fill benign"
                         ></div>
-
                     </div>
 
                 </div>
 
             </div>
 
-
-            <!-- WARNING -->
-
-            <div class="warning">
-
-                ⚠️
-
-                <span>
-                    Educational use only; not a medical diagnosis.
-                </span>
-
-            </div>
-
-        </section>
+        </div>
 
 
-    </main>
+        <div class="result-meta">
+
+            <span>
+                Model:
+                <b id="modelVersion">
+                    1.0.0
+                </b>
+            </span>
+
+            <span>
+                SVM • RBF • Probability Enabled
+            </span>
+
+        </div>
 
 
-    <!-- ================= FOOTER ================= -->
+        <div class="warning-box">
+
+            ⚠️
+
+            <span>
+                <b>Educational use only.</b>
+                This system is a machine-learning demonstration
+                and must not be used as a medical diagnosis.
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
 
     <footer>
 
-        <span>
-            Breast Cancer SVM API
-        </span>
+        <div>
+            Breast Cancer AI
+            <span>•</span>
+            SVM Classification Lab
+        </div>
 
-        <span>
-            Model v1.0.0 · FastAPI
-        </span>
+        <div>
+            Built with FastAPI + Scikit-learn
+        </div>
 
     </footer>
 
+</main>
 
+
+<!-- ===================================================== -->
+<!-- TOAST -->
+<!-- ===================================================== -->
+
+<div
+    id="toast"
+    class="toast"
+>
+    <span id="toastIcon">✓</span>
+    <span id="toastMessage"></span>
 </div>
 
 
-<!-- ================= JAVASCRIPT ================= -->
-
 <script>
 
-const featureNames = [
-
+const FEATURE_NAMES = [
     "mean radius",
     "mean texture",
     "mean perimeter",
@@ -600,15 +559,34 @@ const featureNames = [
     "worst concave points",
     "worst symmetry",
     "worst fractal dimension"
-
 ];
 
 
-/*
-==================================================
-DỮ LIỆU MẪU
-==================================================
-*/
+const GROUPS = [
+
+    {
+        title: "Mean Characteristics",
+        icon: "01",
+        description: "Average cellular measurements",
+        fields: FEATURE_NAMES.slice(0, 10)
+    },
+
+    {
+        title: "Standard Error",
+        icon: "02",
+        description: "Measurement error parameters",
+        fields: FEATURE_NAMES.slice(10, 20)
+    },
+
+    {
+        title: "Worst Characteristics",
+        icon: "03",
+        description: "Largest / most abnormal measurements",
+        fields: FEATURE_NAMES.slice(20, 30)
+    }
+
+];
+
 
 const sampleData = {
 
@@ -644,104 +622,280 @@ const sampleData = {
     "worst concave points": 0.2654,
     "worst symmetry": 0.4601,
     "worst fractal dimension": 0.1189
-
 };
 
 
-/*
-==================================================
-LOAD SAMPLE
-==================================================
-*/
+const featureGroups =
+    document.getElementById("featureGroups");
 
-function loadSample() {
 
-    for (const name of featureNames) {
+/* =====================================================
+   CREATE INPUTS
+===================================================== */
+
+GROUPS.forEach(group => {
+
+    const section =
+        document.createElement("div");
+
+    section.className =
+        "feature-group";
+
+
+    section.innerHTML = `
+
+        <div class="group-header">
+
+            <div class="group-number">
+                ${group.icon}
+            </div>
+
+            <div>
+                <h3>${group.title}</h3>
+                <p>${group.description}</p>
+            </div>
+
+        </div>
+
+        <div class="input-grid"></div>
+    `;
+
+
+    const grid =
+        section.querySelector(".input-grid");
+
+
+    group.fields.forEach((feature, index) => {
+
+        const wrapper =
+            document.createElement("div");
+
+        wrapper.className =
+            "input-wrapper";
+
+
+        const inputId =
+            "feature-" +
+            FEATURE_NAMES.indexOf(feature);
+
+
+        wrapper.innerHTML = `
+
+            <label for="${inputId}">
+                ${feature}
+            </label>
+
+            <div class="input-shell">
+
+                <span class="input-number">
+                    ${String(
+                        FEATURE_NAMES.indexOf(feature) + 1
+                    ).padStart(2, "0")}
+                </span>
+
+                <input
+                    id="${inputId}"
+                    data-feature="${feature}"
+                    type="number"
+                    step="any"
+                    placeholder="0.0000"
+                >
+
+            </div>
+        `;
+
+
+        grid.appendChild(wrapper);
+
 
         const input =
-            document.getElementById(name);
+            wrapper.querySelector("input");
 
-        input.value =
-            sampleData[name];
 
-    }
+        input.addEventListener(
+            "input",
+            updateCounter
+        );
 
-    hideResult();
+    });
+
+
+    featureGroups.appendChild(section);
+
+});
+
+
+/* =====================================================
+   COUNTER
+===================================================== */
+
+function updateCounter() {
+
+    const inputs =
+        document.querySelectorAll(
+            "[data-feature]"
+        );
+
+
+    let filled = 0;
+
+
+    inputs.forEach(input => {
+
+        if (input.value.trim() !== "") {
+
+            filled++;
+
+            input
+                .closest(".input-wrapper")
+                ?.classList.add("filled");
+
+        } else {
+
+            input
+                .closest(".input-wrapper")
+                ?.classList.remove("filled");
+
+        }
+
+    });
+
+
+    document.getElementById(
+        "filledCount"
+    ).textContent = filled;
 
 }
 
 
-/*
-==================================================
-CLEAR FORM
-==================================================
-*/
+/* =====================================================
+   TOAST
+===================================================== */
 
-function clearForm() {
+let toastTimer;
 
-    for (const name of featureNames) {
 
-        const input =
-            document.getElementById(name);
+function showToast(
+    message,
+    icon = "✓"
+) {
 
-        input.value = "";
+    const toast =
+        document.getElementById("toast");
 
-    }
 
-    hideResult();
+    document.getElementById(
+        "toastMessage"
+    ).textContent = message;
+
+
+    document.getElementById(
+        "toastIcon"
+    ).textContent = icon;
+
+
+    toast.classList.add("show");
+
+
+    clearTimeout(toastTimer);
+
+
+    toastTimer = setTimeout(() => {
+
+        toast.classList.remove("show");
+
+    }, 3000);
 
 }
 
 
-/*
-==================================================
-HIDE RESULT
-==================================================
-*/
+/* =====================================================
+   LOAD SAMPLE
+===================================================== */
 
-function hideResult() {
+document
+    .getElementById("sampleButton")
+    .addEventListener("click", () => {
 
-    document
-        .getElementById("resultCard")
-        .classList.add("hidden");
+        FEATURE_NAMES.forEach(feature => {
 
-}
+            const input =
+                document.querySelector(
+                    `[data-feature="${feature}"]`
+                );
 
 
-/*
-==================================================
-PREDICT
-==================================================
-*/
+            if (input) {
+
+                input.value =
+                    sampleData[feature];
+
+            }
+
+        });
+
+
+        updateCounter();
+
+        showToast(
+            "Demo sample loaded successfully.",
+            "✦"
+        );
+
+    });
+
+
+/* =====================================================
+   CLEAR
+===================================================== */
+
+document
+    .getElementById("clearButton")
+    .addEventListener("click", () => {
+
+        document
+            .querySelectorAll(
+                "[data-feature]"
+            )
+            .forEach(input => {
+
+                input.value = "";
+
+            });
+
+
+        updateCounter();
+
+
+        document
+            .getElementById("resultCard")
+            .classList.add("hidden");
+
+
+        showToast(
+            "All inputs have been cleared.",
+            "↻"
+        );
+
+    });
+
+
+/* =====================================================
+   PREDICT
+===================================================== */
 
 async function predict() {
 
-    const button =
-        document.getElementById("predictButton");
-
-    const buttonText =
-        document.getElementById("buttonText");
-
-    const loading =
-        document.getElementById("loading");
-
-    const resultCard =
-        document.getElementById("resultCard");
+    const inputs =
+        document.querySelectorAll(
+            "[data-feature]"
+        );
 
 
     const features = {};
 
 
-    /*
-    ----------------------------------------------
-    Kiểm tra dữ liệu đầu vào
-    ----------------------------------------------
-    */
-
-    for (const name of featureNames) {
-
-        const input =
-            document.getElementById(name);
+    for (const input of inputs) {
 
         const value =
             input.value.trim();
@@ -749,12 +903,12 @@ async function predict() {
 
         if (value === "") {
 
-            alert(
-                "Vui lòng nhập đầy đủ 30 đặc trưng.\n\n" +
-                "Còn thiếu: " + name
-            );
-
             input.focus();
+
+            showToast(
+                "Please complete all 30 features.",
+                "!"
+            );
 
             return;
 
@@ -767,59 +921,54 @@ async function predict() {
 
         if (!Number.isFinite(number)) {
 
-            alert(
-                "Giá trị không hợp lệ tại:\n" +
-                name
-            );
-
             input.focus();
+
+            showToast(
+                "Please enter valid numeric values.",
+                "!"
+            );
 
             return;
 
         }
 
 
-        features[name] =
-            number;
+        features[
+            input.dataset.feature
+        ] = number;
 
     }
 
 
-    /*
-    ----------------------------------------------
-    Loading
-    ----------------------------------------------
-    */
+    const button =
+        document.getElementById(
+            "predictButton"
+        );
+
+
+    button.classList.add("loading");
 
     button.disabled = true;
-
-    buttonText.classList.add("hidden");
-
-    loading.classList.remove("hidden");
 
 
     try {
 
         const response =
-            await fetch("/predict", {
+            await fetch(
+                "/predict",
+                {
+                    method: "POST",
 
-                method: "POST",
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
 
-                headers: {
-
-                    "Content-Type":
-                        "application/json"
-
-                },
-
-                body: JSON.stringify({
-
-                    features:
+                    body: JSON.stringify({
                         features
-
-                })
-
-            });
+                    })
+                }
+            );
 
 
         const data =
@@ -829,152 +978,301 @@ async function predict() {
         if (!response.ok) {
 
             throw new Error(
-
-                data.detail?.message ||
                 data.detail ||
-                "Prediction failed"
-
+                "Prediction failed."
             );
 
         }
 
 
-        /*
-        ------------------------------------------
-        Probability
-        ------------------------------------------
-        */
-
-        const malignant =
-            data.probability_malignant * 100;
-
-        const benign =
-            data.probability_benign * 100;
+        showResult(data);
 
 
-        document.getElementById(
-            "malignantProbability"
-        ).textContent =
-            malignant.toFixed(2) + "%";
+    } catch (error) {
 
-
-        document.getElementById(
-            "benignProbability"
-        ).textContent =
-            benign.toFixed(2) + "%";
-
-
-        document.getElementById(
-            "malignantBar"
-        ).style.width =
-            malignant + "%";
-
-
-        document.getElementById(
-            "benignBar"
-        ).style.width =
-            benign + "%";
-
-
-        /*
-        ------------------------------------------
-        Prediction result
-        ------------------------------------------
-        */
-
-        const title =
-            document.getElementById(
-                "resultTitle"
-            );
-
-        const icon =
-            document.getElementById(
-                "resultIcon"
-            );
-
-
-        if (data.predicted_class === 0) {
-
-            title.textContent =
-                "Malignant";
-
-            title.className =
-                "result-title malignant-text";
-
-            icon.textContent =
-                "⚠";
-
-            icon.className =
-                "result-icon malignant-icon";
-
-        }
-
-        else {
-
-            title.textContent =
-                "Benign";
-
-            title.className =
-                "result-title benign-text";
-
-            icon.textContent =
-                "✓";
-
-            icon.className =
-                "result-icon benign-icon";
-
-        }
-
-
-        /*
-        ------------------------------------------
-        Hiển thị kết quả
-        ------------------------------------------
-        */
-
-        resultCard.classList.remove(
-            "hidden"
+        showToast(
+            error.message ||
+            "Unable to connect to AI engine.",
+            "!"
         );
 
 
-        resultCard.scrollIntoView({
+    } finally {
 
-            behavior: "smooth",
-
-            block: "center"
-
-        });
-
-
-    }
-
-    catch (error) {
-
-        alert(
-            "Không thể thực hiện dự đoán:\n\n" +
-            error.message
+        button.classList.remove(
+            "loading"
         );
-
-    }
-
-    finally {
 
         button.disabled = false;
-
-        buttonText.classList.remove(
-            "hidden"
-        );
-
-        loading.classList.add(
-            "hidden"
-        );
 
     }
 
 }
 
-</script>
 
+/* =====================================================
+   SHOW RESULT
+===================================================== */
+
+function showResult(data) {
+
+    const resultCard =
+        document.getElementById(
+            "resultCard"
+        );
+
+
+    resultCard.classList.remove(
+        "hidden"
+    );
+
+
+    const malignant =
+        data.probability_malignant * 100;
+
+
+    const benign =
+        data.probability_benign * 100;
+
+
+    const isMalignant =
+        data.predicted_class === 0;
+
+
+    document.getElementById(
+        "predictionLabel"
+    ).textContent =
+        data.predicted_label
+            .toUpperCase();
+
+
+    document.getElementById(
+        "resultBadge"
+    ).textContent =
+        isMalignant
+            ? "MALIGNANT"
+            : "BENIGN";
+
+
+    document.getElementById(
+        "predictionDescription"
+    ).textContent =
+        isMalignant
+            ? "The model classified this sample as malignant."
+            : "The model classified this sample as benign.";
+
+
+    document.getElementById(
+        "modelVersion"
+    ).textContent =
+        data.model_version;
+
+
+    const malignantText =
+        document.getElementById(
+            "malignantPercent"
+        );
+
+
+    const benignText =
+        document.getElementById(
+            "benignPercent"
+        );
+
+
+    const malignantBar =
+        document.getElementById(
+            "malignantBar"
+        );
+
+
+    const benignBar =
+        document.getElementById(
+            "benignBar"
+        );
+
+
+    malignantBar.style.width = "0%";
+    benignBar.style.width = "0%";
+
+
+    malignantText.textContent = "0%";
+    benignText.textContent = "0%";
+
+
+    setTimeout(() => {
+
+        malignantBar.style.width =
+            `${malignant}%`;
+
+        benignBar.style.width =
+            `${benign}%`;
+
+
+        animateNumber(
+            malignantText,
+            malignant
+        );
+
+
+        animateNumber(
+            benignText,
+            benign
+        );
+
+    }, 150);
+
+
+    resultCard.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+
+    showToast(
+        "AI analysis completed.",
+        "✓"
+    );
+
+}
+
+
+/* =====================================================
+   NUMBER ANIMATION
+===================================================== */
+
+function animateNumber(
+    element,
+    target
+) {
+
+    const duration = 900;
+
+    const start =
+        performance.now();
+
+
+    function update(time) {
+
+        const progress =
+            Math.min(
+                (time - start) / duration,
+                1
+            );
+
+
+        const eased =
+            1 - Math.pow(
+                1 - progress,
+                3
+            );
+
+
+        element.textContent =
+            `${(target * eased).toFixed(1)}%`;
+
+
+        if (progress < 1) {
+
+            requestAnimationFrame(update);
+
+        }
+
+    }
+
+
+    requestAnimationFrame(update);
+
+}
+
+
+/* =====================================================
+   BUTTON
+===================================================== */
+
+document
+    .getElementById("predictButton")
+    .addEventListener(
+        "click",
+        predict
+    );
+
+
+/* =====================================================
+   KEYBOARD SHORTCUT
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.ctrlKey &&
+            event.key === "Enter"
+        ) {
+
+            event.preventDefault();
+
+            predict();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   THEME
+===================================================== */
+
+const themeButton =
+    document.getElementById(
+        "themeButton"
+    );
+
+
+themeButton.addEventListener(
+    "click",
+    () => {
+
+        document.body.classList.toggle(
+            "light-mode"
+        );
+
+
+        const light =
+            document.body.classList.contains(
+                "light-mode"
+            );
+
+
+        themeButton.textContent =
+            light ? "☀" : "☾";
+
+
+        localStorage.setItem(
+            "theme",
+            light ? "light" : "dark"
+        );
+
+    }
+);
+
+
+if (
+    localStorage.getItem("theme")
+    === "light"
+) {
+
+    document.body.classList.add(
+        "light-mode"
+    );
+
+    themeButton.textContent = "☀";
+
+}
+
+</script>
 
 </body>
 
