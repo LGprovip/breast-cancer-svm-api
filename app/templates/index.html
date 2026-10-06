@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Breast Cancer SVM</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/style.css"
+    >
+
+</head>
+
+
+<body>
+
+<div class="page">
+
+    <!-- HEADER -->
+
+    <header class="header">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                🩺
+            </div>
+
+            <div>
+
+                <h1>Breast Cancer SVM</h1>
+
+                <p>
+                    Breast Cancer Wisconsin Classification
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <a
+            class="docs-button"
+            href="/docs"
+            target="_blank"
+        >
+            API Docs ↗
+        </a>
+
+    </header>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                ● SVM RBF MODEL
+            </div>
+
+            <h2>
+                Breast Cancer
+                <span>Prediction</span>
+            </h2>
+
+            <p>
+                Nhập 30 đặc trưng hình thái học của tế bào
+                để thực hiện dự đoán bằng mô hình
+                Support Vector Machine.
+            </p>
+
+        </div>
+
+
+        <div class="hero-stat">
+
+            <div class="stat-number">
+                30
+            </div>
+
+            <div class="stat-label">
+                FEATURES
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MAIN -->
+
+    <main class="content">
+
+
+        <!-- FEATURE FORM -->
+
+        <section class="card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <h3>
+                        Input Features
+                    </h3>
+
+                    <p>
+                        Nhập các thông số của mẫu cần dự đoán
+                    </p>
+
+                </div>
+
+                <div class="feature-count">
+                    30 inputs
+                </div>
+
+            </div>
+
+
+            <!-- MEAN -->
+
+            <div class="feature-group">
+
+                <div class="group-title">
+
+                    <span class="group-number">
+                        01
+                    </span>
+
+                    <div>
+
+                        <h4>
+                            Mean Features
+                        </h4>
+
+                        <p>
+                            Giá trị trung bình
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="input-grid">
+
+                    <div class="input-box">
+                        <label>Mean Radius</label>
+                        <input id="mean radius" type="number" step="any" value="17.99">
+                    </div>
+
+                    <div class="input-box">
+                        <label>Mean Texture</label>
+                        <input id="mean texture" type="number" step="any" value="10.38">
+                    </div>
+
+                    <div class="input-box">
+                        <label>Mean Perimeter</label>
+                        <input id="mean perimeter" type="number" step="any" value="122.8">
+                    </div>
+
+                    <div class="input-box">
+                        <label>Mean Area</label>
+                        <input id="mean area" type="number" step="any" value="1001">
+                    </div>
+
+                    <div class="input-box">
+                        <label>Mean Smoothness</label>
+                        <input id="mean smoothness" type="number" step="any" value="0.1184">
+                    </div>
+
+                    <div class="input-box">
+                        <label>Mean Compactness</label>
+                        <input id="mean compactness" type="number" step="any" value="0.2776">
+                    </div>
+
+                    <div class="input-box">
+                        <label>Mean Concavity</label>
+                        <input id="mean concavity" type="number" step="any" value="0.3001">
+                    </div>
+
+                    <div class="input-box">
+                        <label>Mean Concave Points</label>
+                        <input id="mean concave points" type="number" step="any" value="0.1471">
+                    </div>
+
+                    <div class="input-box">
+                        <label>Mean Symmetry</label>
+                        <input id="mean symmetry" type="number" step="any" value="0.2419">
+                    </div>
+
+                    <div class="input-box">
+                        <label>Mean Fractal Dimension</label>
+                        <input id="mean fractal dimension" type="number" step="any" value="0.07871">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ERROR -->
+
+            <div class="feature-group">
+
+                <div class="group-title">
+
+                    <span class="group-number">
+                        02
+                    </span>
+
+                    <div>
+
+                        <h4>
+                            Error Features
+                        </h4>
+
+                        <p>
+                            Sai số đo lường
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="input-grid">
+
+                    <div class="input-box">
+                        <label>Radius Error</label>
+                        <input id="radius error" type="number" step="any" value="1.095">
+                    </div>
+
+                    <div class="input-box">
+                        <label>Texture Error</label>
+                        <input id="texture error" type="number" step="any" value="0.9053">
+                    </div>
+
+                    <div class="input-box">
+                        <label>Perimeter Error</label>
+                        <input id="perimeter error" type="number" step="any" value="8.589">
+                    </div>
+
+                    <div class="input-box">
+                        <label>Area Error</label>
+                        <input id="area error" type="number" step="any" value="153.4">
+                    </div>
+
+                    <div class="input-box">
+                        <label>Smoothness Error</label>
+                        <input id="smoothness error" type="number" step="any" value="0.006399">
+                    </div>
+
+                    <div class="input-box">
+                        <label>Compactness Error</label>
+                        <input id="compactness error" type="number" step="any" value="0.04904">
+                    </div>
+
+                    <div class="input-box">
+                        <label>Concavity Error</label>
+                        <input id="concavity error" type="number" step="any" value="0.05373">
+                    </div>
+
+                    <div class="input-box">
+                        <label>Concave Points Error</label>
+                        <input id="concave points error" type="number" step="any" value="0.01587">
+                    </div>
+
+                    <div class="input-box">
+                        <label>Symmetry Error</label>
+                        <input id="symmetry error" type="number" step="any" value="0.03003">
+                    </div>
+
+                    <div class="input-box">
+                        <label>Fractal Dimension Error</label>
+                        <input id="fractal dimension error" type="number" step="any" value="0.006193">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- WORST -->
+
+            <div class="feature-group">
+
+                <div class="group-title">
+
+                    <span class="group-number">
+                        03
+                    </span>
+
+                    <div>
+
+                        <h4>
+                            Worst Features
+                        </h4>
+
+                        <p>
+                            Giá trị lớn nhất
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="input-grid">
+
+                    <div class="input-box">
+                        <label>Worst Radius</label>
+                        <input id="worst radius" type="number" step="any" value="25.38">
+                    </div>
+
+                    <div class="input-box">
+                        <label>Worst Texture</label>
+                        <input id="worst texture" type="number" step="any" value="17.33">
+                    </div>
+
+                    <div class="input-box">
+                        <label>Worst Perimeter</label>
+                        <input id="worst perimeter" type="number" step="any" value="184.6">
+                    </div>
+
+                    <div class="input-box">
+                        <label>Worst Area</label>
+                        <input id="worst area" type="number" step="any" value="2019">
+                    </div>
+
+                    <div class="input-box">
+                        <label>Worst Smoothness</label>
+                        <input id="worst smoothness" type="number" step="any" value="0.1622">
+                    </div>
+
+                    <div class="input-box">
+                        <label>Worst Compactness</label>
+                        <input id="worst compactness" type="number" step="any" value="0.6656">
+                    </div>
+
+                    <div class="input-box">
+                        <label>Worst Concavity</label>
+                        <input id="worst concavity" type="number" step="any" value="0.7119">
+                    </div>
+
+                    <div class="input-box">
+                        <label>Worst Concave Points</label>
+                        <input id="worst concave points" type="number" step="any" value="0.2654">
+                    </div>
+
+                    <div class="input-box">
+                        <label>Worst Symmetry</label>
+                        <input id="worst symmetry" type="number" step="any" value="0.4601">
+                    </div>
+
+                    <div class="input-box">
+                        <label>Worst Fractal Dimension</label>
+                        <input id="worst fractal dimension" type="number" step="any" value="0.1189">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- BUTTON -->
+
+            <button
+                id="predictButton"
+                class="predict-button"
+                onclick="predict()"
+            >
+
+                <span id="buttonText">
+                    🔍 Predict Result
+                </span>
+
+                <span
+                    id="loading"
+                    class="loading hidden"
+                >
+                    <span class="spinner"></span>
+                    Predicting...
+                </span>
+
+            </button>
+
+
+        </section>
+
+
+        <!-- RESULT -->
+
+        <section
+            id="resultCard"
+            class="result-card hidden"
+        >
+
+            <div class="result-header">
+
+                <div>
+
+                    <span class="result-label">
+                        PREDICTION RESULT
+                    </span>
+
+                    <h3 id="resultTitle">
+                        -
+                    </h3>
+
+                </div>
+
+                <div
+                    id="resultIcon"
+                    class="result-icon"
+                >
+                    ?
+                </div>
+
+            </div>
+
+
+            <div class="probability-container">
+
+                <div class="probability-item">
+
+                    <div class="probability-top">
+
+                        <span>
+                            Malignant
+                        </span>
+
+                        <strong id="malignantProbability">
+                            0%
+                        </strong>
+
+                    </div>
+
+                    <div class="progress">
+
+                        <div
+                            id="malignantBar"
+                            class="progress-bar malignant"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="probability-item">
+
+                    <div class="probability-top">
+
+                        <span>
+                            Benign
+                        </span>
+
+                        <strong id="benignProbability">
+                            0%
+                        </strong>
+
+                    </div>
+
+                    <div class="progress">
+
+                        <div
+                            id="benignBar"
+                            class="progress-bar benign"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="warning">
+
+                ⚠️
+
+                <span>
+                    Educational use only; not a medical diagnosis.
+                </span>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <span>
+            Breast Cancer SVM API
+        </span>
+
+        <span>
+            Model v1.0.0 · FastAPI
+        </span>
+
+    </footer>
+
+
+</div>
+
+
+<script>
+
+const featureNames = [
+
+    "mean radius",
+    "mean texture",
+    "mean perimeter",
+    "mean area",
+    "mean smoothness",
+    "mean compactness",
+    "mean concavity",
+    "mean concave points",
+    "mean symmetry",
+    "mean fractal dimension",
+
+    "radius error",
+    "texture error",
+    "perimeter error",
+    "area error",
+    "smoothness error",
+    "compactness error",
+    "concavity error",
+    "concave points error",
+    "symmetry error",
+    "fractal dimension error",
+
+    "worst radius",
+    "worst texture",
+    "worst perimeter",
+    "worst area",
+    "worst smoothness",
+    "worst compactness",
+    "worst concavity",
+    "worst concave points",
+    "worst symmetry",
+    "worst fractal dimension"
+
+];
+
+
+async function predict() {
+
+    const button =
+        document.getElementById("predictButton");
+
+    const buttonText =
+        document.getElementById("buttonText");
+
+    const loading =
+        document.getElementById("loading");
+
+    const resultCard =
+        document.getElementById("resultCard");
+
+
+    button.disabled = true;
+
+    buttonText.classList.add("hidden");
+
+    loading.classList.remove("hidden");
+
+
+    const features = {};
+
+
+    for (const name of featureNames) {
+
+        const input =
+            document.getElementById(name);
+
+        features[name] =
+            parseFloat(input.value);
+
+    }
+
+
+    try {
+
+        const response =
+            await fetch("/predict", {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    features: features
+                })
+
+            });
+
+
+        const data =
+            await response.json();
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.detail?.message ||
+                "Prediction failed"
+            );
+
+        }
+
+
+        const malignant =
+            data.probability_malignant * 100;
+
+        const benign =
+            data.probability_benign * 100;
+
+
+        document.getElementById(
+            "malignantProbability"
+        ).textContent =
+            malignant.toFixed(2) + "%";
+
+
+        document.getElementById(
+            "benignProbability"
+        ).textContent =
+            benign.toFixed(2) + "%";
+
+
+        document.getElementById(
+            "malignantBar"
+        ).style.width =
+            malignant + "%";
+
+
+        document.getElementById(
+            "benignBar"
+        ).style.width =
+            benign + "%";
+
+
+        const title =
+            document.getElementById("resultTitle");
+
+        const icon =
+            document.getElementById("resultIcon");
+
+
+        if (data.predicted_class === 0) {
+
+            title.textContent =
+                "Malignant";
+
+            title.className =
+                "result-title malignant-text";
+
+            icon.textContent =
+                "⚠";
+
+            icon.className =
+                "result-icon malignant-icon";
+
+        } else {
+
+            title.textContent =
+                "Benign";
+
+            title.className =
+                "result-title benign-text";
+
+            icon.textContent =
+                "✓";
+
+            icon.className =
+                "result-icon benign-icon";
+
+        }
+
+
+        resultCard.classList.remove("hidden");
+
+        resultCard.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
+
+    } catch (error) {
+
+        alert(
+            "Không thể thực hiện dự đoán: " +
+            error.message
+        );
+
+    }
+
+
+    button.disabled = false;
+
+    buttonText.classList.remove("hidden");
+
+    loading.classList.add("hidden");
+
+}
+
+</script>
+
+
+</body>
+
+</html>

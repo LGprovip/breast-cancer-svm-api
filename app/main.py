@@ -1,56 +1,74 @@
 from pathlib import Path
 import json
+import math
 
 import joblib
 import numpy as np
 
 from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel, Field
+from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
+from pydantic import BaseModel
 
 
-# ============================================================
-# 1. ĐƯỜNG DẪN
-# ============================================================
+# =========================================================
+# PATH
+# =========================================================
 
-BASE_DIR = Path(__file__).resolve().parents[1]
+BASE_DIR = Path(__file__).resolve().parent.parent
 
-MODEL_PATH = BASE_DIR / "artifacts" / "breast_cancer_svm.joblib"
-META_PATH = BASE_DIR / "artifacts" / "metadata.json"
+ARTIFACT_DIR = BASE_DIR / "artifacts"
+MODEL_PATH = ARTIFACT_DIR / "breast_cancer_svm.joblib"
+METADATA_PATH = ARTIFACT_DIR / "metadata.json"
+
+TEMPLATE_PATH = BASE_DIR / "app" / "templates" / "index.html"
+STATIC_DIR = BASE_DIR / "app" / "static"
 
 
-# ============================================================
-# 2. LOAD MODEL VÀ METADATA
-# ============================================================
+# =========================================================
+# LOAD MODEL
+# =========================================================
 
 model = joblib.load(MODEL_PATH)
 
-metadata = json.loads(
-    META_PATH.read_text(
-        encoding="utf-8"
-    )
-)
+with open(METADATA_PATH, "r", encoding="utf-8") as f:
+    metadata = json.load(f)
 
 
-# ============================================================
-# 3. KHỞI TẠO FASTAPI
-# ============================================================
+# =========================================================
+# FASTAPI
+# =========================================================
 
 app = FastAPI(
     title="Breast Cancer SVM API",
-    version=metadata["model_version"],
-    description="Educational demonstration only"
+    description="SVM model for Breast Cancer Wisconsin dataset",
+    version="1.0.0",
 )
 
 
-# ============================================================
-# 4. PYDANTIC MODEL
-# ============================================================
+# Static files
+app.mount(
+    "/static",
+    StaticFiles(directory=STATIC_DIR),
+    name="static",
+)
+
+
+# =========================================================
+# FEATURE NAMES
+# =========================================================
+
+FEATURE_NAMES = metadata["feature_names"]
+
+CLASS_MAPPING = metadata["class_mapping"]
+
+
+# =========================================================
+# PYDANTIC MODELS
+# =========================================================
 
 class PredictionRequest(BaseModel):
-    features: dict[str, float] = Field(
-        ...,
-        description="Exactly 30 named numeric features"
-    )
+    features: dict[str, float]
 
 
 class PredictionResponse(BaseModel):
@@ -62,92 +80,85 @@ class PredictionResponse(BaseModel):
     warning: str
 
 
-# ============================================================
-# 5. BUILD VECTOR
-# ============================================================
+# =========================================================
+# HELPERS
+# =========================================================
 
-def build_vector(
-    payload: PredictionRequest
-) -> np.ndarray:
+def build_vector(features: dict[str, float]):
 
-    expected_features = metadata["feature_names"]
-
-    received_features = set(
-        payload.features.keys()
-    )
-
-    expected_features_set = set(
-        expected_features
-    )
-
-    missing_features = (
-        expected_features_set
-        - received_features
-    )
-
-    extra_features = (
-        received_features
-        - expected_features_set
-    )
-
-    if missing_features:
-        raise HTTPException(
-            status_code=422,
-            detail={
-                "error": "Missing features",
-                "features": sorted(
-                    missing_features
-                )
-            }
-        )
-
-    if extra_features:
-        raise HTTPException(
-            status_code=422,
-            detail={
-                "error": "Extra features",
-                "features": sorted(
-                    extra_features
-                )
-            }
-        )
-
-    values = [
-        payload.features[name]
-        for name in expected_features
+    missing = [
+        feature
+        for feature in FEATURE_NAMES
+        if feature not in features
     ]
 
-    vector = np.asarray(
-        values,
-        dtype=float
-    ).reshape(1, -1)
+    extra = [
+        feature
+        for feature in features
+        if feature not in FEATURE_NAMES
+    ]
 
-    if not np.isfinite(vector).all():
+    if missing:
         raise HTTPException(
             status_code=422,
-            detail="Features must be finite numbers."
+            detail={
+                "message": "Missing features",
+                "features": missing,
+            },
         )
 
-    return vector
+    if extra:
+        raise HTTPException(
+            status_code=422,
+            detail={
+                "message": "Unknown features",
+                "features": extra,
+            },
+        )
+
+    values = []
+
+    for feature in FEATURE_NAMES:
+
+        value = features[feature]
+
+        if not isinstance(value, (int, float)):
+            raise HTTPException(
+                status_code=422,
+                detail={
+                    "message": f"Invalid value for feature: {feature}"
+                },
+            )
+
+        if not math.isfinite(float(value)):
+            raise HTTPException(
+                status_code=422,
+                detail={
+                    "message": f"Value must be finite: {feature}"
+                },
+            )
+
+        values.append(float(value))
+
+    return np.array(values).reshape(1, -1)
 
 
-# ============================================================
-# 6. ROOT ENDPOINT
-# ============================================================
+# =========================================================
+# HOME PAGE
+# =========================================================
 
-@app.get("/")
-def root():
+@app.get("/", response_class=HTMLResponse)
+def home():
 
-    return {
-        "message": "Breast Cancer SVM API",
-        "version": metadata["model_version"],
-        "docs": "/docs"
-    }
+    with open(TEMPLATE_PATH, "r", encoding="utf-8") as f:
+        html = f.read()
+
+    return HTMLResponse(content=html)
 
 
-# ============================================================
-# 7. HEALTH ENDPOINT
-# ============================================================
+# =========================================================
+# HEALTH
+# =========================================================
 
 @app.get("/health")
 def health():
@@ -155,13 +166,16 @@ def health():
     return {
         "status": "ok",
         "model_loaded": True,
-        "model_version": metadata["model_version"]
+        "model_version": metadata.get(
+            "model_version",
+            "1.0.0"
+        ),
     }
 
 
-# ============================================================
-# 8. METADATA ENDPOINT
-# ============================================================
+# =========================================================
+# METADATA
+# =========================================================
 
 @app.get("/metadata")
 def get_metadata():
@@ -169,49 +183,51 @@ def get_metadata():
     return metadata
 
 
-# ============================================================
-# 9. PREDICT ENDPOINT
-# ============================================================
+# =========================================================
+# PREDICT
+# =========================================================
 
 @app.post(
     "/predict",
     response_model=PredictionResponse
 )
-def predict(
-    payload: PredictionRequest
-):
+def predict(request: PredictionRequest):
 
-    x = build_vector(payload)
+    X = build_vector(request.features)
 
-    predicted_class = int(
-        model.predict(x)[0]
-    )
+    prediction = int(model.predict(X)[0])
 
-    probabilities = model.predict_proba(x)[0]
+    probabilities = model.predict_proba(X)[0]
 
-    classes = list(
-        model.named_steps["svc"].classes_
-    )
+    classes = model.named_steps["svc"].classes_
 
-    probability_map = {
-        int(c): float(v)
-        for c, v in zip(
-            classes,
-            probabilities
-        )
+    probability_malignant = 0.0
+    probability_benign = 0.0
+
+    for class_value, probability in zip(
+        classes,
+        probabilities
+    ):
+
+        if int(class_value) == 0:
+            probability_malignant = float(probability)
+
+        elif int(class_value) == 1:
+            probability_benign = float(probability)
+
+    predicted_label = CLASS_MAPPING[str(prediction)]
+
+    return {
+        "predicted_class": prediction,
+        "predicted_label": predicted_label,
+        "probability_malignant": probability_malignant,
+        "probability_benign": probability_benign,
+        "model_version": metadata.get(
+            "model_version",
+            "1.0.0"
+        ),
+        "warning": metadata.get(
+            "warning",
+            "Educational use only; not a medical diagnosis."
+        ),
     }
-
-    return PredictionResponse(
-        predicted_class=predicted_class,
-        predicted_label=metadata[
-            "class_mapping"
-        ][str(predicted_class)],
-        probability_malignant=probability_map[0],
-        probability_benign=probability_map[1],
-        model_version=metadata[
-            "model_version"
-        ],
-        warning=metadata[
-            "warning"
-        ]
-    )
