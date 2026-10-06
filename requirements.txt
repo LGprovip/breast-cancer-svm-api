@@ -10,3 +10,6 @@ uvicorn[standard]
 pydantic
 pytest
 httpx
+passlib
+itsdangerous
+python-multipart

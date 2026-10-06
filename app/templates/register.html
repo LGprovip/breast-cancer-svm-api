@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Create Account - Breast Cancer SVM</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/style.css"
+    >
+
+</head>
+
+<body class="auth-page">
+
+<div class="auth-container">
+
+    <div class="auth-card">
+
+        <div class="auth-logo">
+            🧬
+        </div>
+
+        <div class="auth-title">
+
+            <h1>Create Account</h1>
+
+            <p>
+                Create your account to use
+                Breast Cancer SVM
+            </p>
+
+        </div>
+
+
+        {% if error %}
+
+        <div class="auth-error">
+            {{ error }}
+        </div>
+
+        {% endif %}
+
+
+        <form
+            method="POST"
+            action="/register"
+        >
+
+            <div class="auth-input">
+
+                <label>Username</label>
+
+                <input
+                    type="text"
+                    name="username"
+                    placeholder="Enter username"
+                    required
+                >
+
+            </div>
+
+
+            <div class="auth-input">
+
+                <label>Email</label>
+
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Enter email"
+                    required
+                >
+
+            </div>
+
+
+            <div class="auth-input">
+
+                <label>Password</label>
+
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Create password"
+                    required
+                >
+
+            </div>
+
+
+            <div class="auth-input">
+
+                <label>Confirm Password</label>
+
+                <input
+                    type="password"
+                    name="confirm_password"
+                    placeholder="Confirm password"
+                    required
+                >
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="auth-button"
+            >
+                Create Account
+            </button>
+
+        </form>
+
+
+        <div class="auth-footer">
+
+            Already have an account?
+
+            <a href="/login">
+                Login
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
